@@ -1,0 +1,56 @@
+﻿@model List<Examen.Models.Alumno>
+
+<h2>Lista de Alumnos</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div id="mensaje" class="alert alert-success">
+        @TempData["Mensaje"]
+    </div>
+
+    <script>
+        setTimeout(function () {
+            document.getElementById("mensaje").style.display = "none";
+        }, 5000);
+    </script>
+}
+
+<a href="@Url.Action("Agregar", "Alumno")" class="btn btn-primary">
+    Agregar Alumno
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>DNI</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Carrera</th>
+            <th>Ciclo</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var alumno in Model)
+        {
+            <tr>
+                <td>@alumno.dni</td>
+                <td>@alumno.nombres</td>
+                <td>@alumno.apellidos</td>
+                <td>@alumno.carrera</td>
+                <td>@alumno.ciclo</td>
+
+                <td>
+                    <a href="@Url.Action("Eliminar", "Alumno", new { dni = alumno.dni })"
+                       class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

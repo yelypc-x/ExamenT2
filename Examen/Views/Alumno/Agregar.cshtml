@@ -1,0 +1,55 @@
+﻿<h2>Agregar Alumno</h2>
+
+<form method="post" action="@Url.Action("Agregar", "Alumno")">
+
+    <div class="form-group">
+        <label>DNI</label>
+        <input type="text" name="dni" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Nombres</label>
+        <input type="text" name="nombres" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Carrera</label>
+        <input type="text" name="carrera" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Ciclo</label>
+        <input type="number" name="ciclo" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">
+        Guardar
+    </button>
+
+    <a href="@Url.Action("Index", "Alumno")" class="btn btn-secondary">
+        Regresar
+    </a>
+
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Mensaje
+    </div>
+}
