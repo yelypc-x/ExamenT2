@@ -1,0 +1,15 @@
+﻿@model Examen.Models.Alumno
+
+<h2>Detalles del Alumno</h2>
+
+<p><strong>DNI:</strong> @Model.dni</p>
+<p><strong>Nombres:</strong> @Model.nombres</p>
+<p><strong>Apellidos:</strong> @Model.apellidos</p>
+<p><strong>Carrera:</strong> @Model.carrera</p>
+<p><strong>Ciclo:</strong> @Model.ciclo</p>
+
+<br />
+
+<a href="@Url.Action("Index", "Alumno")" class="btn btn-secondary">
+    Regresar
+</a>

@@ -45,6 +45,17 @@
                 <td>@alumno.ciclo</td>
 
                 <td>
+
+                    <a href="@Url.Action("Detalles", "Alumno", new { dni = alumno.dni })"
+                       class="btn btn-info">
+                        Detalles
+                    </a>
+
+                    <a href="@Url.Action("Actualizar", "Alumno", new { dni = alumno.dni })"
+                       class="btn btn-warning">
+                        Actualizar
+                    </a>
+
                     <a href="@Url.Action("Eliminar", "Alumno", new { dni = alumno.dni })"
                        class="btn btn-danger">
                         Eliminar

@@ -13,6 +13,9 @@ namespace Examen.Models
         public string carrera { get; set; }
         public int ciclo { get; set; }
 
+        public Alumno()
+        {
+        }
         public Alumno(string dni, string nombres, string apellidos, string carrera, int ciclo)
         {
             this.dni = dni;

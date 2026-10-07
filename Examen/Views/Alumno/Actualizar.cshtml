@@ -1,0 +1,59 @@
+﻿@model Examen.Models.Alumno
+
+<h2>Actualizar Alumno</h2>
+
+<form method="post" action="@Url.Action("Actualizar", "Alumno")">
+
+    <input type="hidden" name="dniOriginal" value="@Model.dni" />
+
+    <div class="form-group">
+        <label>DNI</label>
+        <input type="text" name="dni" value="@Model.dni" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Nombres</label>
+        <input type="text" name="nombres" value="@Model.nombres" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" value="@Model.apellidos" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Carrera</label>
+        <input type="text" name="carrera" value="@Model.carrera" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Ciclo</label>
+        <input type="number" name="ciclo" value="@Model.ciclo" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">
+        Actualizar
+    </button>
+
+    <a href="@Url.Action("Index", "Alumno")" class="btn btn-secondary">
+        Regresar
+    </a>
+
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Mensaje
+    </div>
+}

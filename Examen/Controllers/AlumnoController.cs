@@ -92,5 +92,89 @@ namespace Examen.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // GET: Alumno/Detalles
+        public ActionResult Detalles(string dni)
+        {
+            List<Alumno> alumnos = Deserializar();
+
+            Alumno alumno = alumnos.FirstOrDefault(a => a.dni == dni);
+
+            if (alumno == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(alumno);
+        }
+
+        // GET: Alumno/Actualizar
+        [HttpGet]
+        public ActionResult Actualizar(string dni)
+        {
+            List<Alumno> alumnos = Deserializar();
+
+            Alumno alumno = alumnos.FirstOrDefault(a => a.dni == dni);
+
+            if (alumno == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(alumno);
+        }
+
+        // POST: Alumno/Actualizar
+        [HttpPost]
+        public ActionResult Actualizar(
+            string dniOriginal,
+            string dni,
+            string nombres,
+            string apellidos,
+            string carrera,
+            int ciclo)
+        {
+            List<Alumno> alumnos = Deserializar();
+
+            Alumno alumnoExistente =
+                alumnos.FirstOrDefault(a => a.dni == dniOriginal);
+
+            if (alumnoExistente == null)
+            {
+                return HttpNotFound();
+            }
+
+            bool dniRepetido = alumnos.Any(
+                a => a.dni == dni &&
+                     a.dni != dniOriginal
+            );
+
+            if (dniRepetido)
+            {
+                ViewBag.Mensaje = "El DNI ingresado ya pertenece a otro alumno.";
+
+                Alumno alumnoError = new Alumno(
+                    dni,
+                    nombres,
+                    apellidos,
+                    carrera,
+                    ciclo
+                );
+
+                return View(alumnoError);
+            }
+
+            alumnoExistente.dni = dni;
+            alumnoExistente.nombres = nombres;
+            alumnoExistente.apellidos = apellidos;
+            alumnoExistente.carrera = carrera;
+            alumnoExistente.ciclo = ciclo;
+
+            Serializar(alumnos);
+
+            TempData["Mensaje"] = "Alumno actualizado correctamente.";
+
+            return RedirectToAction("Index");
+        }
     }
 }
